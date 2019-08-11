@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBView, MDBBadge } from "mdbreact";
-import ImageMask from './ImageMask';
+import {ImageMask} from './ImageMask';
 
-export default class Image extends Component {
+export class Image extends Component {
   render() {
       const {image, onDelete, onUpload} = this.props;
     return (

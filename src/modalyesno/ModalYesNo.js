@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ModalWrapper from '../modalwrapper/ModalWrapper';
+import {ModalWrapper} from '../modalwrapper/ModalWrapper';
 import {MDBBtn} from 'mdbreact';
 
-export default class ModalYesNo extends Component {
+export class ModalYesNo extends Component {
 
 
     toggle = ()=> {

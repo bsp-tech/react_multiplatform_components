@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import StateUtil from '../utils/StateUtil';
+import {StateUtil} from '../utils/StateUtil';
 import './CheckBox.css';
 
 const style = { 
     errorInput: {borderColor:"red", borderWidth:1}
   };
 
-export default class CheckBox extends Component {
+export  class CheckBox extends Component {
     render(){
         const {item, error, readOnly, component, key } = this.props;
         

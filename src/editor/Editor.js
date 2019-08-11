@@ -5,10 +5,10 @@ import 'froala-editor/js/plugins.pkgd.min.js';
 
 import FroalaEditor from 'react-froala-wysiwyg';
 import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
-import React from 'react';
-import StateUtil from '../utils/StateUtil';
+import React, {Component} from 'react';
+import {StateUtil} from '../utils/StateUtil';
 
-export default class EditorComponent extends React.Component {
+export class Editor extends Component {
 
     state = {
         val: null

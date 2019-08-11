@@ -6,7 +6,7 @@ import {
   MDBDropdownItem
 } from "mdbreact";
 
-export default class DropDownList extends Component {
+export class DropDownList extends Component {
   render() {
     const {attributeValueList} = this.props;
     const dropDown = (

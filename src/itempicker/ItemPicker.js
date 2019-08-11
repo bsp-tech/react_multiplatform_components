@@ -1,22 +1,47 @@
 import React, { Component } from "react";
-import StateUtil from '../utils/StateUtil';
+import EntityService from "../../../../services/EntityService";
+import './ItemPicker.css'
+import { StateUtil } from "../utils/StateUtil";
+export class ItemPicker extends Component {
+    state = {
+      val: null,
+      list: []
+    }
 
-export default class ItemPicker extends Component {
-  state = {
-    val: null
-  }
+    service = new EntityService(this);
+
+    componentDidMount(){
+      const {item} = this.props;
+      //console.log(item);
+      if(item.endPoint!=null){
+        this.service.loadItems(item.endPoint);
+      }
+    }
+
     render() {
-        const {items, error, placeholder, component, onValueChange} = this.props;
-        
-        const pickerItems = items.map((item, index)=>{
-            return <option key={index} value={item.id}>{item.name}</option>
-        })
+        const {error, component, onValueChange, item} = this.props;
+
+        let items = this.props.items;
+        if(!items) items = this.state.list;
+        const {label} = this.props.item;
+        let pickerItemsTemp = null;
+        if(items!=null){
+          pickerItemsTemp = items.map((item_, index)=>{
+              return <option key={index} value={item_[item.valueParam]}>{item_[item.displayParam]}</option>
+          })
+        }
+
+        const selectOption = <option key={-1} value={null}>{"select"}</option>;
+
+        const pickerItems = [
+          selectOption,
+          [...pickerItemsTemp]
+        ]
 
         return (
-            <div style={styles.sectionInput}>
               <select
-                style={styles.picker} 
-                placeholder={placeholder}
+                className="picker md-form"
+                placeholder={label}
                 onChange={event => {
                   const val = event.target.value;
 
@@ -24,39 +49,15 @@ export default class ItemPicker extends Component {
                       onValueChange(val);
                     }
                     // this.setState({val: val});
-                    StateUtil.handleFieldChange(this, val);
-                    console.log(component.state);
+                    StateUtil.handleFieldChange(this, val, item.name, true);
+                    //console.log(component.state);
                   } 
                 }
-                value={this.state.val}
+                value={StateUtil.get(component.state, item.name)}
               >
                 {pickerItems}
               </select>
-            </div>
         )
     }
 }
-
-const styles = {
-    picker:{
-      height:"100%", width:"100%",marginLeft:0, paddingLeft: 0
-    },
-    pickerText:{
-      paddingLeft:5
-    },
-    pickerPlaceHolder:{
-      color:"#666666", paddingLeft: 5 
-    },
-    pickerPlaceHolderError:{
-      color:"red", paddingLeft: 5 
-    },
-    sectionInput: {
-      width: "100%",
-      borderWidth: 0.3,
-      borderRadius: 2,
-      height: 40,
-      marginTop: 10,
-    },
-    errorInput: {borderColor:"red", borderWidth:1}
-  };
-  
+ 

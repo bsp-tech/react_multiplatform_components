@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { MDBTable,MDBIcon, MDBTableHead, MDBTableBody, MDBNavLink, MDBBtn} from 'mdbreact';
-import PaginationWrapper from '../pagination/PaginationWrapper';
-import StateUtil from '../utils/StateUtil';
-import ModalYesNo from '../modalyesno/ModalYesNo';
+import {PaginationWrapper} from '../pagination/PaginationWrapper';
+import {StateUtil} from '../utils/StateUtil';
+import {ModalYesNo} from '../modalyesno/ModalYesNo';
 
-export default class DataTableComponent extends Component {
+export class DataTableComponent extends Component {
  
     state = {
         selectedRowData:null,

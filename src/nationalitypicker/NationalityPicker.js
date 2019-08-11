@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class MapPicker extends Component {
+export default class NationalityPicker extends Component {
     render() {
         return (
             <div>

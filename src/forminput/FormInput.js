@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
-import MyImagePicker from '../myimagepicker/MyImagePicker';
-import MapPicker from '../mappicker/MapPicker';
-import DefaultFormInput from '../defaultforminput/DefaultFormInput';
-import MyImagesPicker from '../myimagespicker/MyImagesPicker';
+import {MyImagePicker} from '../myimagepicker/MyImagePicker';
+import {MapPicker} from '../mappicker/MapPicker';
+import {DefaultFormInput} from '../defaultforminput/DefaultFormInput';
+import {MyImagesPicker} from '../myimagespicker/MyImagesPicker';
 import { InputFieldType } from '../datatable/DataTableTypes';
-import CheckBox from '../checkbox/CheckBox';
-import DNDatePicker from '../datepicker/DNDatePicker';
-import Editor from '../editor/Editor';
+import {CheckBox} from '../checkbox/CheckBox';
+import {DNDatePicker} from '../datepicker/DNDatePicker';
+import {Editor} from '../editor/Editor';
+import ModelPicker from '../modelpicker/ModelPicker';
+import BrandPicker from '../brandpicker/BrandPicker';
+import { ItemPicker } from '../itempicker/ItemPicker';
 
 const style = {
   errorInput: {borderColor:"red", borderWidth:1, fontSize:16, fontWeight:"bold"},
   defaultInput: {fontSize:16, fontWeight:"bold"}
 };
 
-export default class FormInput extends Component {
+export class FormInput extends Component {
     state = {
         val: null
     }
@@ -70,6 +73,17 @@ export default class FormInput extends Component {
                 result_component = <Editor 
                                         item={item} key={key} readOnly={readOnly} error={error} component={component}/>;
                 break;
+        case InputFieldType.MODEL_PICKER:
+                result_component = <ModelPicker
+                                        item={item} key={key} readOnly={readOnly} error={error} component={component}/>;
+                break;
+        case InputFieldType.BRAND_PICKER:
+                result_component = <BrandPicker 
+                                        item={item} key={key} readOnly={readOnly} error={error} component={component}/>;
+                break;
+        case InputFieldType.SELECT_BOX:
+                        result_component =  <ItemPicker  item      ={item} error     ={error} component ={component} />
+                        break;
         case InputFieldType.CUSTOM:
                 result_component = customComponent;
                 break;

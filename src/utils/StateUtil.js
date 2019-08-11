@@ -1,11 +1,11 @@
-import CommonUtil from "./CommonUtil";
+import {CommonUtil} from "./CommonUtil";
 import { TableColumnType } from "../datatable/DataTableTypes";
 
-export default class StateUtil {
+export class StateUtil {
 
         static get = (state, name) => {
-           // console.log(state);
-            //console.log(name);
+           console.log(state);
+            console.log(name);
             if(!state || !name) return "";
             if(name.length===0) return state;
             const p = name;
@@ -53,7 +53,7 @@ export default class StateUtil {
             let result = data;
             if(column.type==="empty"){
                 return null;
-            }else if(column.type===TableColumnType.IMAGE){
+            }else if(column.type===TableColumnType.IMAGE_URL){
                 result = CommonUtil.imageFormatter(data);
             }else if(column.type===TableColumnType.IMAGE_BASE64){
                 result = CommonUtil.imageFormatterBase64(data);

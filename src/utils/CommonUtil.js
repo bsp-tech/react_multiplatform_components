@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class CommonUtil {
+export class CommonUtil {
 
     static imageFormatter = (data) => {
       const url = data;

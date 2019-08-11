@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MDBPagination, MDBPageItem, MDBPageNav } from "mdbreact";
 
-class PaginationWrapper extends Component {
+export class PaginationWrapper extends Component {
  
     render(){
       let count = 1;//this.props.page.totalPages;
@@ -38,5 +38,3 @@ class PaginationWrapper extends Component {
         )
       }
 }
-
-export default PaginationWrapper;

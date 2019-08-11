@@ -1,6 +1,6 @@
 export enum InputFieldType {
-    TEXT="TEXT",
-    TEXT_AREA="TEXT_AREA",
+    TEXT="text",
+    TEXT_AREA="textarea",
     EDITOR="EDITOR",
     PASSWORD="PASSWORD",
     DATE ="DATE",
@@ -11,7 +11,9 @@ export enum InputFieldType {
     IMAGE_URL_MULTIPLE = "IMAGE_URL_MULTIPLE",
     IMAGE_BASE64 = "IMAGE_BASE64",
     IMAGE_BASE64_MULTIPLE = "IMAGE_BASE64_MULTIPLE",
-    CUSTOM = "CUSTOM",
+    NATIONALITY_PICKER = "CUSTOM",
+    BRAND_PICKER = "CUSTOM",
+    MODEL_PICKER = "CUSTOM",
 }
 
 class AbstractInputField {
@@ -29,8 +31,10 @@ class AbstractInputField {
 }
 
 export class InputField extends AbstractInputField {
-   constructor(name: string, label: string, type:InputFieldType = InputFieldType.TEXT, optional=false){
+    parent: string;
+   constructor(name: string, label: string, type:InputFieldType = InputFieldType.TEXT, optional=false, parent: string){
        super(name, label, type, optional);
+       this.parent = parent;
    }
 }
 

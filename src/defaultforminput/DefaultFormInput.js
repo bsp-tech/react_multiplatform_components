@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import StateUtil from '../utils/StateUtil';
+import {StateUtil} from '../utils/StateUtil';
 import {MDBInput} from 'mdbreact'
 import './DefaultFormInput.css';
 
@@ -7,7 +7,7 @@ const style = {
     errorInput: {borderColor:"red", borderWidth:1}
   };
 
-export default class DefaultFormInput extends Component {
+export class DefaultFormInput extends Component {
     render(){
         const {item, error, readOnly, component, key } = this.props;
         

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
-export default class ModalWrapper extends Component {
+export class ModalWrapper extends Component {
       render() {
         let {modalSize, header,footer,  body, toggle, show} = this.props;
         modalSize = modalSize?modalSize:"md";

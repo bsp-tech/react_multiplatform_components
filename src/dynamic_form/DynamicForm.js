@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { MDBBtn, MDBRow, MDBCol, MDBContainer } from "mdbreact";
-import FormInput from '../forminput/FormInput';
-import StateUtil from "../utils/StateUtil";
+import {FormInput} from '../forminput/FormInput';
+import {StateUtil} from "../utils/StateUtil";
 
-class DynamicForm extends Component {
+export class DynamicForm extends Component {
  
   state = {
       validate: ()=>this.validate(),
@@ -20,7 +20,6 @@ class DynamicForm extends Component {
     sections.forEach((section)=>{
        const {rows} = section;
        rows.forEach((item)=>{
-         console.log(item);
          if(!item.name || item.type==="empty") return;
          validation[item.name] = false;
          if(!item.optional){
@@ -113,5 +112,3 @@ class DynamicForm extends Component {
 
   
 }
-
-export default DynamicForm;

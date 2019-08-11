@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
 import {MDBBtn, MDBCol, MDBRow} from 'mdbreact'
-import MyImagePicker from '../myimagepicker/MyImagePicker';
-import StateUtil from '../utils/StateUtil';
+import {MyImagePicker} from '../myimagepicker/MyImagePicker';
+import {StateUtil} from '../utils/StateUtil';
+import { InputFieldType, InputField } from '../datatable/DataTableTypes';
 
-export default class MyImagesPicker extends Component {
+export class MyImagesPicker extends Component {
 
     render() {
-        const { error, readOnly, type, component,  name, key } = this.props;
+        const { error, readOnly, component, item, key } = this.props;
+        const {type, name} = item;
         let list = StateUtil.get(component.state, name);
         let imagePickerList = null;
         console.log(list);
-        if(list!==null) {
+        if(list!==null && list.length>0) {
             imagePickerList = list.map((image, index)=>{
                 const nm = name+"."+index+".mediafile";
                 return (
                     <MDBCol md={6}>
                         <MyImagePicker  
-                            readOnly={readOnly} error={error} component={component} name={nm} type={type}
+                            readOnly={readOnly} error={error} component={component}
+                            item={new InputField(nm,"image", InputFieldType.IMAGE_URL)}
                             onDelete={()=>{this.handleDeleteBtn(index)}}/>
                     </MDBCol>
                 );
@@ -33,32 +36,28 @@ export default class MyImagesPicker extends Component {
     }
 
     handleDeleteBtn = (i)=>{
-        const {component, name} = this.props;
-        let list = StateUtil.get(component.state, name);
+        const {component, item} = this.props;
+        let list = StateUtil.get(component.state, item.name);
         list = list.filter((item, index)=>index!==i);
-        console.log(component.state);
-        console.log(i);
         StateUtil.handleFieldChange(this, list);
-        console.log(list);
-        console.log(component.state);
 
         this.setState({});
     }
 
     handleAddBtn = ()=>{
-        const {component, name, parent} = this.props;
-        let list = StateUtil.get(component.state, name);
-        if(list===null){
+        const {component, item} = this.props;
+        let list = StateUtil.get(component.state, item.name);
+        if(list===null || list.length===0){
             list=[];
         }
         const newItem = {mediafile:""};
-        console.log(component.state);
-        newItem[parent] = {id: StateUtil.get(component.state, "target.id")};
-        console.log(newItem);
+        console.log(item);
+        StateUtil.set(item.parent,newItem,  StateUtil.get(component.state, "target.id"));
         list.push(newItem);
-        StateUtil.handleFieldChange(this, list);
+        StateUtil.handleFieldChange(this, list, item.name);
         this.setState({});
     }
+
     renderAddButton = ()=>{
         return (
             <MDBBtn onClick={()=>{this.handleAddBtn()}}>Add</MDBBtn>

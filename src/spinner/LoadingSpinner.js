@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class LoadingSpinner extends Component {
+export class LoadingSpinner extends Component {
     render() {
         return (
             <div className={"text-center"} style={{marginTop:"5%"}}>

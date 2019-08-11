@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBMask } from "mdbreact";
 
-export default class ImageMask extends Component {
+export class ImageMask extends Component {
     render() {
         return (
             <MDBMask overlay="white-slight" className="waves-light">
