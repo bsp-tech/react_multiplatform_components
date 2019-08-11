@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CheckBoxList from "./../CheckBoxList";
+import CheckBoxList from "../CheckBoxList";
 import EntityService from '../../../../services/EntityService';
 
 class CarUtilityPicker extends Component {

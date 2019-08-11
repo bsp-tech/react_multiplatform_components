@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {ItemPicker} from "./../itempicker/ItemPicker";
+import {ItemPicker} from "../itempicker/ItemPicker";
 import {connect} from 'react-redux';
 import {setBrands, setModels} from '../../../../store/actions/index';
 import EntityService from '../../../../services/EntityService';
